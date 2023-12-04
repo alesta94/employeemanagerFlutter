@@ -1,6 +1,4 @@
-# flutter_with_spring_boot
-
-A new Flutter project.
+# Employee Management From Flutter BackEnd is SpringBoot
 
 ## Getting Started
 
