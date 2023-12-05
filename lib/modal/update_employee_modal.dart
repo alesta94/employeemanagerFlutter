@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_with_spring_boot/model/employee.dart';
 import 'package:flutter_with_spring_boot/services/employee_service.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter/services.dart';
 
 class UpdateEmployeeModal extends StatefulWidget {
   final Function(Employee) onEmployeeUpdated;
@@ -25,11 +26,11 @@ class _UpdateEmployeeModalState extends State<UpdateEmployeeModal> {
   final TextEditingController jobTitleController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController imageUrlController = TextEditingController();
+  final TextInputFormatter phoneFormatter = FilteringTextInputFormatter.digitsOnly;
 
   @override
   void initState() {
     super.initState();
-    // Set initial values based on the existing employee
     nameController.text = widget.existingEmployee.name;
     emailController.text = widget.existingEmployee.email;
     jobTitleController.text = widget.existingEmployee.jobTitle;
@@ -65,16 +66,19 @@ class _UpdateEmployeeModalState extends State<UpdateEmployeeModal> {
               ),
               TextFormField(
                 controller: phoneController,
+                keyboardType: TextInputType.phone,
+                inputFormatters: [phoneFormatter],
                 decoration: InputDecoration(labelText: 'Phone'),
               ),
-              GestureDetector(
-                onTap: () async {
+              TextFormField(
+                controller: imageUrlController,
+                decoration: InputDecoration(labelText: 'Image URL'),
+              ),
+              ElevatedButton(
+                onPressed: () async {
                   await _showImageUrlDialog(context);
                 },
-                child: TextFormField(
-                  controller: imageUrlController,
-                  decoration: InputDecoration(labelText: 'Image URL'),
-                ),
+                child: Text("Add Image"),
               ),
               ElevatedButton(
                 onPressed: () async {

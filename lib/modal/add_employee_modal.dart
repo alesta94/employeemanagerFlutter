@@ -1,6 +1,7 @@
 // create a new file, e.g., add_employee_modal.dart
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_with_spring_boot/model/employee.dart';
 import 'package:flutter_with_spring_boot/services/employee_service.dart';
 import 'package:image_picker/image_picker.dart';
@@ -22,6 +23,7 @@ class _AddEmployeeModalState extends State<AddEmployeeModal> {
   final TextEditingController jobTitleController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController imageUrlController = TextEditingController();
+  final TextInputFormatter phoneFormatter = FilteringTextInputFormatter.digitsOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,8 @@ class _AddEmployeeModalState extends State<AddEmployeeModal> {
               ),
               TextFormField(
                 controller: phoneController,
+                keyboardType: TextInputType.phone,
+                inputFormatters: [phoneFormatter],
                 decoration: InputDecoration(labelText: 'Phone'),
               ),
               GestureDetector(
