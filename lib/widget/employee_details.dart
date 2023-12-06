@@ -4,12 +4,12 @@ import 'package:flutter_with_spring_boot/model/employee.dart';
 class EmployeeDetailsWidget extends StatelessWidget {
   final Employee employee;
 
-  EmployeeDetailsWidget({required this.employee});
+  const EmployeeDetailsWidget({super.key, required this.employee});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(20.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -20,7 +20,7 @@ class EmployeeDetailsWidget extends StatelessWidget {
               children: [
                 Text(
                   employee.name,
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
                 Text('Email: ${employee.email}'),
                 Text('Job Title: ${employee.jobTitle}'),

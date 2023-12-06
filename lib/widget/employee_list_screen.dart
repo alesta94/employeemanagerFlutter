@@ -6,6 +6,8 @@ import 'package:flutter_with_spring_boot/modal/add_employee_modal.dart';
 import 'package:flutter_with_spring_boot/widget/employee_details_page.dart';
 
 class EmployeeListScreen extends StatefulWidget {
+  const EmployeeListScreen({super.key});
+
   @override
   _EmployeeListScreenState createState() => _EmployeeListScreenState();
 }
@@ -17,10 +19,10 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Employee Manager'),
+        title: const Text('Employee Manager'),
         actions: [
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: () {
               _showAddEmployeeModal(context);
             },
@@ -31,7 +33,7 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
         future: employeeService.getAllEmployees(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
@@ -85,21 +87,21 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirm Delete'),
+          title: const Text('Confirm Delete'),
           content: Text('Are you sure you want to delete ${employee.name}?'),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
                 _deleteEmployee(employee);
                 Navigator.pop(context);
               },
-              child: Text('Delete'),
+              child: const Text('Delete'),
             ),
           ],
         );

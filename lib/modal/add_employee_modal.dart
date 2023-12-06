@@ -1,5 +1,3 @@
-// create a new file, e.g., add_employee_modal.dart
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_with_spring_boot/model/employee.dart';
@@ -41,21 +39,21 @@ class _AddEmployeeModalState extends State<AddEmployeeModal> {
             children: [
               TextFormField(
                 controller: nameController,
-                decoration: InputDecoration(labelText: 'Name'),
+                decoration: const InputDecoration(labelText: 'Name'),
               ),
               TextFormField(
                 controller: emailController,
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: const InputDecoration(labelText: 'Email'),
               ),
               TextFormField(
                 controller: jobTitleController,
-                decoration: InputDecoration(labelText: 'Job Title'),
+                decoration: const InputDecoration(labelText: 'Job Title'),
               ),
               TextFormField(
                 controller: phoneController,
                 keyboardType: TextInputType.phone,
                 inputFormatters: [phoneFormatter],
-                decoration: InputDecoration(labelText: 'Phone'),
+                decoration: const InputDecoration(labelText: 'Phone'),
               ),
               GestureDetector(
                 onTap: () async {
@@ -63,7 +61,7 @@ class _AddEmployeeModalState extends State<AddEmployeeModal> {
                 },
                 child: TextFormField(
                   controller: imageUrlController,
-                  decoration: InputDecoration(labelText: 'Image URL'),
+                  decoration: const InputDecoration(labelText: 'Image URL'),
                 ),
               ),
               ElevatedButton(
@@ -88,7 +86,7 @@ class _AddEmployeeModalState extends State<AddEmployeeModal> {
 
                   Navigator.pop(context);
                 },
-                child: Text("SAVE"),
+                child: const Text("SAVE"),
               ),
             ],
           ),
@@ -102,7 +100,7 @@ class _AddEmployeeModalState extends State<AddEmployeeModal> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Add Image"),
+          title: const Text("Add Image"),
           content: Column(
             children: [
               ElevatedButton(
@@ -113,7 +111,7 @@ class _AddEmployeeModalState extends State<AddEmployeeModal> {
                     imageUrlController.text = imageUrl;
                   }
                 },
-                child: Text("Add from URL"),
+                child: const Text("Add from URL"),
               ),
               ElevatedButton(
                 onPressed: () async {
@@ -123,7 +121,7 @@ class _AddEmployeeModalState extends State<AddEmployeeModal> {
                     imageUrlController.text = pickedImage.path;
                   }
                 },
-                child: Text("Pick from Gallery"),
+                child: const Text("Pick from Gallery"),
               ),
             ],
           ),
@@ -139,24 +137,24 @@ class _AddEmployeeModalState extends State<AddEmployeeModal> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Add Image from URL'),
+          title: const Text('Add Image from URL'),
           content: TextField(
             controller: imageUrlController,
-            decoration: InputDecoration(labelText: 'Image URL'),
+            decoration: const InputDecoration(labelText: 'Image URL'),
           ),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.pop(context, null);
               },
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
                 String imageUrl = imageUrlController.text;
                 Navigator.pop(context, imageUrl);
               },
-              child: Text('Add'),
+              child: const Text('Add'),
             ),
           ],
         );

@@ -18,7 +18,7 @@ class EmployeeService {
       }
     } catch (error) {
       print('Error in getEmployees: $error');
-      throw error;
+      rethrow;
     }
   }
 

@@ -54,31 +54,31 @@ class _UpdateEmployeeModalState extends State<UpdateEmployeeModal> {
             children: [
               TextFormField(
                 controller: nameController,
-                decoration: InputDecoration(labelText: 'Name'),
+                decoration: const InputDecoration(labelText: 'Name'),
               ),
               TextFormField(
                 controller: emailController,
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: const InputDecoration(labelText: 'Email'),
               ),
               TextFormField(
                 controller: jobTitleController,
-                decoration: InputDecoration(labelText: 'Job Title'),
+                decoration: const InputDecoration(labelText: 'Job Title'),
               ),
               TextFormField(
                 controller: phoneController,
                 keyboardType: TextInputType.phone,
                 inputFormatters: [phoneFormatter],
-                decoration: InputDecoration(labelText: 'Phone'),
+                decoration: const InputDecoration(labelText: 'Phone'),
               ),
               TextFormField(
                 controller: imageUrlController,
-                decoration: InputDecoration(labelText: 'Image URL'),
+                decoration: const InputDecoration(labelText: 'Image URL'),
               ),
               ElevatedButton(
                 onPressed: () async {
                   await _showImageUrlDialog(context);
                 },
-                child: Text("Add Image"),
+                child: const Text("Add Image"),
               ),
               ElevatedButton(
                 onPressed: () async {
@@ -102,7 +102,7 @@ class _UpdateEmployeeModalState extends State<UpdateEmployeeModal> {
 
                   Navigator.pop(context);
                 },
-                child: Text("UPDATE"),
+                child: const Text("UPDATE"),
               ),
             ],
           ),
@@ -116,7 +116,7 @@ class _UpdateEmployeeModalState extends State<UpdateEmployeeModal> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Add Image"),
+          title: const Text("Add Image"),
           content: Column(
             children: [
               ElevatedButton(
@@ -127,7 +127,7 @@ class _UpdateEmployeeModalState extends State<UpdateEmployeeModal> {
                     imageUrlController.text = imageUrl;
                   }
                 },
-                child: Text("Add from URL"),
+                child: const Text("Add from URL"),
               ),
               ElevatedButton(
                 onPressed: () async {
@@ -137,7 +137,7 @@ class _UpdateEmployeeModalState extends State<UpdateEmployeeModal> {
                     imageUrlController.text = pickedImage.path;
                   }
                 },
-                child: Text("Pick from Gallery"),
+                child: const Text("Pick from Gallery"),
               ),
             ],
           ),
@@ -153,24 +153,24 @@ class _UpdateEmployeeModalState extends State<UpdateEmployeeModal> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Add Image from URL'),
+          title: const Text('Add Image from URL'),
           content: TextField(
             controller: imageUrlController,
-            decoration: InputDecoration(labelText: 'Image URL'),
+            decoration: const InputDecoration(labelText: 'Image URL'),
           ),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.pop(context, null);
               },
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
                 String imageUrl = imageUrlController.text;
                 Navigator.pop(context, imageUrl);
               },
-              child: Text('Add'),
+              child: const Text('Add'),
             ),
           ],
         );

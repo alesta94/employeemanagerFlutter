@@ -5,7 +5,7 @@ import 'package:flutter_with_spring_boot/modal/update_employee_modal.dart';
 class EmployeeDetailsPage extends StatefulWidget {
   final Employee employee;
 
-  EmployeeDetailsPage({required this.employee});
+  const EmployeeDetailsPage({super.key, required this.employee});
 
   @override
   _EmployeeDetailsPageState createState() => _EmployeeDetailsPageState();
@@ -30,10 +30,10 @@ class _EmployeeDetailsPageState extends State<EmployeeDetailsPage> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      title: Text('Details'),
+      title: const Text('Details'),
       actions: [
         IconButton(
-          icon: Icon(Icons.edit_outlined),
+          icon: const Icon(Icons.edit_outlined),
           onPressed: () {
             _showUpdateEmployeeModal(context, _employee);
           },
@@ -47,10 +47,10 @@ class _EmployeeDetailsPageState extends State<EmployeeDetailsPage> {
       child: Column(
         children: [
           buildEmployeeImage(),
-          buildEmployeeDetailText('Name', '${_employee.name}', 20, FontWeight.bold),
-          buildEmployeeDetailText('Job Title', '${_employee.jobTitle}', 18),
-          buildEmployeeDetailText('Email', '${_employee.email}', 16),
-          buildEmployeeDetailText('Phone', '${_employee.phone}', 16),
+          buildEmployeeDetailText('Name', _employee.name, 20, FontWeight.bold),
+          buildEmployeeDetailText('Job Title', _employee.jobTitle, 18),
+          buildEmployeeDetailText('Email', _employee.email, 16),
+          buildEmployeeDetailText('Phone', _employee.phone, 16),
         ],
       ),
     );
@@ -58,7 +58,7 @@ class _EmployeeDetailsPageState extends State<EmployeeDetailsPage> {
 
   Widget buildEmployeeImage() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 18.0),
+      padding: const EdgeInsets.symmetric(vertical: 18.0),
       child: Image.network(
         _employee.imageUrl,
         width: 100.0,
@@ -70,9 +70,9 @@ class _EmployeeDetailsPageState extends State<EmployeeDetailsPage> {
 
   Widget buildEmployeeDetailText(String label, String value, double fontSize, [FontWeight? fontWeight]) {
     return Padding(
-      padding: EdgeInsets.only(top: 16.0),
+      padding: const EdgeInsets.only(top: 16.0),
       child: Text(
-        '$value',
+        value,
         style: TextStyle(fontSize: fontSize, fontWeight: fontWeight),
       ),
     );
